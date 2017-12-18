@@ -26,13 +26,11 @@
 
         Element ul = page_faq_list.children().tagName("ul").get(5);
 
-
         out.println(ul.toString());
 
     } catch (IOException e) {
         e.printStackTrace();
     }
-
 %>
 </body>
 </html>
