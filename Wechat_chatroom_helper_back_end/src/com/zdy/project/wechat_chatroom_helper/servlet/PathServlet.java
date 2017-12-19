@@ -175,8 +175,7 @@ public class PathServlet extends HttpServlet {
     }
 
     private void getConfig1160playVersion(JsonObject data) {
-
-
+        getConfig1060(data);
     }
 
     private void getConfig1180(JsonObject data) {
@@ -334,7 +333,7 @@ public class PathServlet extends HttpServlet {
         data.addProperty("vmsio2", "wWT");//判断一个 item 是否为公众号的依据2
         data.addProperty("vmsio3", "field_username");//判断一个 item 是否为公众号的依据3
 
-       data.addProperty("mclvap", "com.tencent.mm.ui.f$a");//adapter 构造函数的参数
+        data.addProperty("mclvap", "com.tencent.mm.ui.f$a");//adapter 构造函数的参数
 
         data.addProperty("cthu", "com.tencent.mm.ui.d");
         data.addProperty("mhuiv", "ai");//HomeUI 中初始化 View 的方法
