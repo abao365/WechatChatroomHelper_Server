@@ -21,7 +21,6 @@
 
         Element page_faq_list = doc.getElementsByClass("page_faq_list").get(0);
 
-
         Tag tag = page_faq_list.tag();
 
         Element ul = page_faq_list.children().tagName("ul").get(5);

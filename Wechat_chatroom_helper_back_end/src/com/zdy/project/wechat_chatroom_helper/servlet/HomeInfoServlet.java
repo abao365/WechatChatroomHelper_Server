@@ -14,6 +14,6 @@ public class HomeInfoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("http://116.62.247.71:8080/wechat/index.jsp");
+        resp.sendRedirect("http://116.62.247.71:8080/wechat/user_stat.jsp");
     }
 }

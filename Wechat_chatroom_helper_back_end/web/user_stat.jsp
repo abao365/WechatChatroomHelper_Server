@@ -3,27 +3,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
-
     <title>😐</title>
-
 </head>
 <body>
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+<ul class="layui-nav">
+    <li class="layui-nav-item"><a href="user_stat.jsp" style="font-size: large">WechatChatroomHelper</a></li>
+    <li class="layui-nav-item"><a href="wechat_download.jsp">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="user_stat.jsp">用户统计</a></li>
+    <li class="layui-nav-item"><a href="thanks.jsp">鸣谢</a></li>
+    <li class="layui-nav-item"><a href="https://github.com/zhudongya123/WechatChatroomHelper/issues/new">GitHub反馈</a></li>
+</ul>
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;max-width:1000px;">
     <legend>用户数量统计</legend>
 </fieldset>
 
+
 <div class="layui-form">
-    <table class="layui-table">
-        <colgroup>
-            <col width="150">
-            <col width="150">
-            <col>
-        </colgroup>
+    <table class="layui-table" style="max-width:1000px">
         <%
             Calendar instance = Calendar.getInstance();
             instance.set(Calendar.HOUR_OF_DAY, 0);
@@ -59,19 +61,15 @@
 </div>
 
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;max-width:1000px;">
     <legend>今日微信版本统计</legend>
 </fieldset>
 <%
     HashMap<Integer, Integer> wechatMap = DataBaseManager.getInstance().queryWechatVersionPercent(time, currentTime);
 
 %>
-<table class="layui-table">
-    <colgroup>
-        <col width="150">
-        <col width="150">
-        <col>
-    </colgroup>
+<table class="layui-table" style="max-width:1000px">
+
     <%
         ArrayList<String> wechatNameArray = new ArrayList<>();
         ArrayList<Integer> wechatCountArray = new ArrayList<>();
@@ -142,7 +140,7 @@
 
 </table>
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;max-width:1000px;">
     <legend>今日群助手版本统计</legend>
 </fieldset>
 
@@ -154,12 +152,8 @@
     helperMap.put(26, helperMap.get(26) + temp);
 %>
 
-<table class="layui-table">
-    <colgroup>
-        <col width="150">
-        <col width="150">
-        <col>
-    </colgroup>
+<table class="layui-table" style="max-width:1000px">
+
     <%
         ArrayList<String> helperNameArray = new ArrayList<>();
         ArrayList<Integer> helperCountArray = new ArrayList<>();
@@ -232,47 +226,19 @@
     <%
         }
     %>
-
     </tbody>
-    <%--<tr>--%>
-
-    <%--<%--%>
-    <%--for  (Integer item : helperCountArray)  {--%>
-    <%--%>--%>
-    <%--<td><% out.print (item) ;%></td>--%>
-
-    <%--<% } %>--%>
-
-    <%--</tr>--%>
-
-    <%--<tr>--%>
-
-    <%--<%--%>
-    <%--for  (Float item : helperFloatArray)  {--%>
-    <%--%>--%>
-    <%--<td><% out.print (String.format (Locale.CHINESE, "%.2f", item * 100) ) ;%>%</td>--%>
-
-    <%--<% } %>--%>
-
-    <%--</tr>--%>
 
 </table>
 
 
-<p><a href="https://github.com/zhudongya123/WechatChatroomHelper/issues">反馈地址</a></p>
+<p><a href="https://github.com/zhudongya123/WechatChatroomHelper/issues" class="layui-btn layui-btn-normal">反馈地址</a></p>
 鸣谢:<br>
-<p><a href="https://www.coolapk.com/apk/com.toshiba_dealin.developerhelper">开发者助手开发者 (东芝) </a></p>
-<p><a href="https://github.com/veryyoung">微信红包开发者 (veryyoung) </a></p>
-<br>
 
 
-<p>微信6.5.19与6.5.22已经支持</p>
 
-<a href="wechat_download.jsp">点我下载支持的微信版本~</a>
+
 
 <p>欢迎加入反馈群，测试版本在此提供，同时可以更好的反馈BUG及建议~</p>
-
-
 <img src="http://mr-zdy-shanghai.oss-cn-shanghai.aliyuncs.com/wechat_chatroom_helper/feedback_chatroom.png" width="400"
      height="250">
 
