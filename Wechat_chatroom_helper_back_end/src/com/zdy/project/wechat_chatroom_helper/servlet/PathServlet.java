@@ -174,7 +174,7 @@ public class PathServlet extends HttpServlet {
     }
 
     private void getConfig1160playVersion(JsonObject data) {
-        getConfig1060(data);
+        getConfig1160(data);
     }
 
     private void getConfig1180(JsonObject data) {
