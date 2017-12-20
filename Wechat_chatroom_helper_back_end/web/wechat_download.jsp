@@ -44,6 +44,7 @@
     </blockquote>
 </div>
 
+
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
     <legend>目前支持的微信版本</legend>
 </fieldset>
@@ -111,7 +112,14 @@
     </div>
 </div>
 
+<div>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;max-width:1000px;">
+        <legend>反馈群</legend>
+    </fieldset>
 
+    <img src="feedback_pict.png" width="400"  height="255">
+
+</div>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['element', 'layer'], function () {

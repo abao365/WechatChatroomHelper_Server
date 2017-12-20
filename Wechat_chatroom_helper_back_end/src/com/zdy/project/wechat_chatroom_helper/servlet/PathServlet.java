@@ -158,10 +158,9 @@ public class PathServlet extends HttpServlet {
                     getConfig1180(data);
                     msg = "微信版本 6.5.23(1180) 已经成功适配，如未有效果，请重启微信客户端查看。";
                 } else {
-                    msg = "老哥，6.5.23哪里来的 play 版本？";
+                    msg = "老哥，你这明明不是6.5.23 的 play 版本";
                     jsonObject.addProperty("code", 1);
                 }
-
                 jsonObject.add("data", data);
                 break;
             default:
