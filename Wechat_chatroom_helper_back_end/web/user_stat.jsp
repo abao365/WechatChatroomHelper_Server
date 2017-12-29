@@ -112,6 +112,9 @@
                 case 1180:
                     wechatNameArray.add("6.5.23 (1180) ");
                     break;
+                case 1200:
+                    wechatNameArray.add("6.6 (1200) ");
+                    break;
             }
             wechatCountArray.add(value);
             wechatFloatArray.add(Float.valueOf(value) / todayCount);
@@ -163,6 +166,9 @@
             Integer value = entry.getValue();
 
             switch (key) {
+                case 27:
+                    helperNameArray.add("1.3.12beta (27) ");
+                    break;
                 case 26:
                     helperNameArray.add("1.3.11beta (26) ");
                     break;

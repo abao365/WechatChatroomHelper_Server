@@ -84,6 +84,10 @@
             <button class="layui-btn layui-btn-primary layui-btn-sm">
                 <a href="http://dldir1.qq.com/weixin/android/weixin6523android1180.apk">6.5.23（1180）</a>
             </button>
+            <br>
+            <button class="layui-btn layui-btn-primary layui-btn-sm">
+                <a href="http://dldir1.qq.com/weixin/android/weixin660android1200.apk">6.6（1200）</a>
+            </button>
         </div>
     </div>
     <div class="layui-colla-item">
