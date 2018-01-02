@@ -44,13 +44,13 @@
         <tbody>
         <tr>
             <td>今天</td>
-            <td><%out.println(DataBaseManager.getInstance().queryUserCountByTime(time - 86400000, time)); %></td>
-        </tr>
-        <tr>
-            <td>昨天</td>
             <td><%
                 int todayCount = DataBaseManager.getInstance().queryUserCountByTime(time, currentTime);
                 out.println(DataBaseManager.getInstance().queryUserCountByTime(time, currentTime)); %></td>
+        </tr>
+        <tr>
+            <td>昨天</td>
+            <td><%out.println(DataBaseManager.getInstance().queryUserCountByTime(time - 86400000, time)); %></td>
         </tr>
         <tr>
             <td>过去七天</td>
@@ -114,6 +114,9 @@
                     break;
                 case 1200:
                     wechatNameArray.add("6.6 (1200) ");
+                    break;
+                case 1220:
+                    wechatNameArray.add("6.6.1 (1220) ");
                     break;
             }
             wechatCountArray.add(value);
