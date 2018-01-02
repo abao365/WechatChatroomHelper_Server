@@ -39,7 +39,7 @@
     </fieldset>
 
     <blockquote class="layui-elem-quote">
-        6.5.23国内版本和 Play 版本都已经支持~<br>
+        6.6.1已经支持啦~<br>
         现在已经提供群助手已经提供修改UI颜色功能
     </blockquote>
 </div>
@@ -86,7 +86,11 @@
             </button>
             <br>
             <button class="layui-btn layui-btn-primary layui-btn-sm">
-                <a href="http://dldir1.qq.com/weixin/android/weixin660android1200.apk">6.6（1200）</a>
+                <a href="http://dldir1.qq.com/weixin/android/weixin660android1200.apk">6.6.0（1200）</a>
+            </button>
+            <br>
+            <button class="layui-btn layui-btn-primary layui-btn-sm">
+                <a href="http://dldir1.qq.com/weixin/android/weixin661android1220_1.apk">6.6.1（1220）</a>
             </button>
         </div>
     </div>
