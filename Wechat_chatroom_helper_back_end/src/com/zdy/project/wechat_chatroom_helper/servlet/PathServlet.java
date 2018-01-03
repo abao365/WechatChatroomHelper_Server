@@ -64,13 +64,13 @@ public class PathServlet extends HttpServlet {
                 jsonObject.addProperty("msg", show_text_info);
             } else {
                 jsonObject.addProperty("code", 1);
-                jsonObject.addProperty("msg", "微信版本 " + versionCode + " 正在适配，请等待开发者适配");
+                jsonObject.addProperty("msg", "微信版本 " + versionCode + (isPlayVersion.equals("1") ? "play版" : "") + "正在适配，请等待开发者适配");
             }
 
         } catch (Throwable e) {
             e.printStackTrace();
             jsonObject.addProperty("code", 1);
-            jsonObject.addProperty("msg", "微信版本 " + versionCode + " 尚未适配，请等待开发者适配");
+            jsonObject.addProperty("msg", "微信版本 " + versionCode + (isPlayVersion.equals("1") ? "play版" : "") + " 尚未适配，请等待开发者适配");
         }
         writer.write(jsonObject.toString());
     }
