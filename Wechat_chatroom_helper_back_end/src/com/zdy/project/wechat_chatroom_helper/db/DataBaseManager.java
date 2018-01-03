@@ -3,6 +3,7 @@ package com.zdy.project.wechat_chatroom_helper.db;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class DataBaseManager {
 
@@ -77,7 +78,7 @@ public class DataBaseManager {
 
     public HashMap<Integer, Integer> queryWechatVersionPercent(long start, long end) {
 
-        HashMap<Integer, Integer> data = new HashMap<>();
+        LinkedHashMap<Integer, Integer> data = new LinkedHashMap<>();
 
         String sql;
         try {
@@ -120,6 +121,7 @@ public class DataBaseManager {
                 int versionCount = getUserCount(start, end, "wechat_version", String.valueOf(integer));
                 data.put(integer, versionCount);
             }
+
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block

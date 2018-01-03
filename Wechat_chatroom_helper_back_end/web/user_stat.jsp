@@ -15,7 +15,8 @@
     <li class="layui-nav-item"><a href="wechat_download.jsp">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="user_stat.jsp">用户统计</a></li>
     <li class="layui-nav-item"><a href="thanks.jsp">鸣谢</a></li>
-    <li class="layui-nav-item"><a href="https://github.com/zhudongya123/WechatChatroomHelper/issues/new">GitHub反馈</a></li>
+    <li class="layui-nav-item"><a href="https://github.com/zhudongya123/WechatChatroomHelper/issues/new">GitHub反馈</a>
+    </li>
 </ul>
 
 
@@ -86,16 +87,16 @@
                     wechatNameArray.add("未适配版本");
                     break;
                 case 1060:
-                    wechatNameArray.add("6.5.8 (1060) 及[play]");
+                    wechatNameArray.add("6.5.8 (1060)<br/>6.5.8 (1060) [play]");
                     break;
                 case 1080:
-                    wechatNameArray.add("6.5.10 (1080) 及[play]");
+                    wechatNameArray.add("6.5.10 (1080)<br/>6.5.10 (1080) [play]");
                     break;
                 case 1081:
                     wechatNameArray.add("6.5.13 (1081) [play]");
                     break;
                 case 1100:
-                    wechatNameArray.add("6.5.13 (1100) 或6.5.14 (1100) ");
+                    wechatNameArray.add("6.5.13 (1100)<br/>6.5.14 (1100) ");
                     break;
                 case 1101:
                     wechatNameArray.add("6.5.16 (1101) [play]");
@@ -107,7 +108,7 @@
                     wechatNameArray.add("6.5.19 (1140) ");
                     break;
                 case 1160:
-                    wechatNameArray.add("6.5.22 (1160) 或6.5.23 (1160) [play]");
+                    wechatNameArray.add("6.5.22 (1160)<br/>6.5.23 (1160) [play]");
                     break;
                 case 1180:
                     wechatNameArray.add("6.5.23 (1180) ");
@@ -238,15 +239,6 @@
     </tbody>
 
 </table>
-
-
-<p><a href="https://github.com/zhudongya123/WechatChatroomHelper/issues" class="layui-btn layui-btn-normal">反馈地址</a></p>
-鸣谢:<br>
-
-
-
-
-
 
 </body>
 </html>
