@@ -131,6 +131,29 @@ public class DataBaseManager {
         return data;
     }
 
+
+    public HashMap<String, String> queryMatchInfo(int versionCode, int is_play_version) {
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        try {
+            Statement statement = c.createStatement();
+            String sql = "SELECT * FROM wechat_version_info WHERE version_code = " + versionCode + " AND is_play_version =" + is_play_version;
+            ResultSet resultSet = statement.executeQuery(sql);
+            resultSet.next();
+
+            hashMap.put("id", String.valueOf(resultSet.getInt("id")));
+            hashMap.put("version_code", String.valueOf(resultSet.getInt("version_code")));
+            hashMap.put("is_play_version", String.valueOf(resultSet.getInt("is_play_version")));
+            hashMap.put("full_version_name", resultSet.getString("full_version_name"));
+            hashMap.put("is_available", String.valueOf(resultSet.getInt("is_available")));
+            hashMap.put("show_text_info", resultSet.getString("show_text_info"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hashMap;
+    }
+
     public HashMap<Integer, Integer> queryHelperVersionPercent(long start, long end) {
 
         HashMap<Integer, Integer> data = new HashMap<>();

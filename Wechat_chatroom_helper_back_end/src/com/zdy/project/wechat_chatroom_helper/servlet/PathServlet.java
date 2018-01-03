@@ -1,6 +1,7 @@
 package com.zdy.project.wechat_chatroom_helper.servlet;
 
 import com.google.gson.JsonObject;
+import com.zdy.project.wechat_chatroom_helper.db.DataBaseManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 
 /**
  * Created by zhudo on 2017/7/24.
@@ -22,8 +25,6 @@ public class PathServlet extends HttpServlet {
     /**
      * vmbt 字段已在2017年8月8日 21:02:01废弃
      *
-     * @param req
-     * @param resp
      * @throws ServletException
      * @throws IOException
      */
@@ -43,158 +44,34 @@ public class PathServlet extends HttpServlet {
         JsonObject jsonObject = new JsonObject();
         JsonObject data = new JsonObject();
 
-        String msg;
+        HashMap<String, String> hashMap = DataBaseManager.getInstance().queryMatchInfo(versionCodeNumber, Integer.valueOf(isPlayVersion));
 
-        switch (versionCodeNumber) {
-            case 1060:
+        try {
+            String version_code = hashMap.get("version_code");
+            String is_play_version = hashMap.get("is_play_version");
+            String full_version_name = hashMap.get("full_version_name");
+            String is_available = hashMap.get("is_available");
+            String show_text_info = hashMap.get("show_text_info");
+
+            if (is_available.equals("1")) {
+                Class c = Class.forName("com.zdy.project.wechat_chatroom_helper.servlet.PathServlet");
+                Method method = c.getDeclaredMethod("getConfig" + version_code + (is_play_version.equals("1") ? "playVersion" : ""), JsonObject.class);
+                method.setAccessible(true);
+                method.invoke(this, data);
+
                 jsonObject.addProperty("code", 0);
-
-                if (isPlayVersion.equals("0")) {
-                    getConfig1060(data);
-                } else {
-                    getConfig1060playVersion(data);
-                }
-
-                msg = "微信版本 6.5.8(" + versionCodeNumber + ")" + (isPlayVersion.equals("0") ? "" : "[play版] ") + "已经成功适配，如未有效果，请重启微信客户端查看。";
-
                 jsonObject.add("data", data);
-                break;
-            case 1080:
-                jsonObject.addProperty("code", 0);
-
-                if (isPlayVersion.equals("0")) {
-                    getConfig1080(data);
-                } else {
-                    getConfig1080playVersion(data);
-                }
-
-
-                msg = "微信版本 6.5.10(" + versionCodeNumber + ")" + (isPlayVersion.equals("0") ? "" : "[play版] ") + "已经成功适配，如未有效果，请重启微信客户端查看。";
-
-                jsonObject.add("data", data);
-                break;
-
-            case 1081:
-                jsonObject.addProperty("code", 0);
-                jsonObject.addProperty("msg", "success");
-
-
-                getConfig1081playVersion(data);
-
-                msg = "微信版本 6.5.13(" + versionCodeNumber + ")[play版] 已经成功适配，如未有效果，请重启微信客户端查看。";
-
-                jsonObject.add("data", data);
-                break;
-
-            case 1100:
-                if (isPlayVersion.equals("0")) {
-
-                    jsonObject.addProperty("code", 0);
-
-                    getConfig1100(data);
-
-                    jsonObject.add("data", data);
-
-                    msg = "微信版本 6.5.13(" + versionCodeNumber + ") 已经成功适配，如未有效果，请重启微信客户端查看。";
-
-                } else {
-                    jsonObject.addProperty("code", 1);
-                    msg = "老哥，你是不是点错了？？ 你这明明不是play版……";
-                }
-                break;
-            case 1101:
-                jsonObject.addProperty("code", 0);
-                if (isPlayVersion.equals("0")) {
-                    getConfig1101(data);
-                    msg = "微信版本 6.5.14(1100) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    msg = "微信版本 6.5.16(1101)[play版] 已经成功适配，如未有效果，请重启微信客户端查看。";
-                    getConfig1101playVersion(data);
-                }
-
-                jsonObject.add("data", data);
-                break;
-
-            case 1120:
-                if (isPlayVersion.equals("0")) {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1120(data);
-                    msg = "微信版本 6.5.16(1120) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    msg = "老哥，你这个明明不是 6.5.16 的 play 版本";
-                    jsonObject.addProperty("code", 1);
-                }
-
-                jsonObject.add("data", data);
-                break;
-            case 1140:
-                if (isPlayVersion.equals("0")) {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1140(data);
-                    msg = "微信版本 6.5.19(1140) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    msg = "老哥，6.5.19哪里来的 play 版本？";
-                    jsonObject.addProperty("code", 1);
-                }
-
-                jsonObject.add("data", data);
-                break;
-            case 1160:
-                if (isPlayVersion.equals("0")) {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1160(data);
-                    msg = "微信版本 6.5.22(1160) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1160playVersion(data);
-                    msg = "微信版本 6.5.23(1160)[play版] 已经成功适配，如未有效果，请重启微信客户端查看。";
-                }
-
-                jsonObject.add("data", data);
-                break;
-            case 1180:
-                if (isPlayVersion.equals("0")) {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1180(data);
-                    msg = "微信版本 6.5.23(1180) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    msg = "老哥，你这明明不是6.5.23 的 play 版本";
-                    jsonObject.addProperty("code", 1);
-                }
-                jsonObject.add("data", data);
-                break;
-
-            case 1200:
-                if (isPlayVersion.equals("0")) {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1200(data);
-                    msg = "微信版本 6.6.0(1200) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    msg = "老哥，6.6.0哪里来的 play 版本？";
-                    jsonObject.addProperty("code", 1);
-                }
-                jsonObject.add("data", data);
-                break;
-
-            case 1220:
-                if (isPlayVersion.equals("0")) {
-                    jsonObject.addProperty("code", 0);
-                    getConfig1220(data);
-                    msg = "微信版本 6.6.1(1220) 已经成功适配，如未有效果，请重启微信客户端查看。";
-                } else {
-                    msg = "老哥，6.6.1哪里来的 play 版本？";
-                    jsonObject.addProperty("code", 1);
-                }
-                jsonObject.add("data", data);
-                break;
-
-            default:
+                jsonObject.addProperty("msg", show_text_info);
+            } else {
                 jsonObject.addProperty("code", 1);
-                msg = "微信版本" + versionCodeNumber + "暂未适配，请等待开发者解决。";
-                break;
-        }
-        jsonObject.addProperty("msg", msg);
+                jsonObject.addProperty("msg", "微信版本 " + versionCode + " 正在适配，请等待开发者适配");
+            }
 
+        } catch (Throwable e) {
+            e.printStackTrace();
+            jsonObject.addProperty("code", 1);
+            jsonObject.addProperty("msg", "微信版本 " + versionCode + " 尚未适配，请等待开发者适配");
+        }
         writer.write(jsonObject.toString());
     }
 
