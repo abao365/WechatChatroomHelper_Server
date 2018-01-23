@@ -116,6 +116,11 @@
             <button class="layui-btn layui-btn-primary layui-btn-sm">
                 <a href="https://download.apkpure.com/b/apk/Y29tLnRlbmNlbnQubW1fMTE2MF8yY2UyNjAxZA?_fn=V2VDaGF0X3Y2LjUuMjNfYXBrcHVyZS5jb20uYXBr&k=0f33ce5459c7fd25e93cc57fbc3f00735a3cb9fe&as=6ad3da5f04ca3f3a7d0b2c67e97945555a3a1776&_p=Y29tLnRlbmNlbnQubW0&c=1%7CCOMMUNICATION">6.5.23（1160）play版本</a>
             </button>
+            <br>
+            <button class="layui-btn layui-btn-primary layui-btn-sm">
+                <a href=" https://download.apkpure.com/b/apk/Y29tLnRlbmNlbnQubW1fMTIyMF9iNTI0M2FkYQ?_fn=V2VDaGF0X3Y2LjYuMV9hcGtwdXJlLmNvbS5hcGs&k=54ffe2f2f5826415e422488e7ded0bd25a5a1705&as=b889e59154d7d3ac4c0dd88044b518305a57747d&_p=Y29tLnRlbmNlbnQubW0&c=1%7CCOMMUNICATION">6.6.1（1220）play版本</a>
+            </button>
+
         </div>
     </div>
 </div>
@@ -125,7 +130,7 @@
         <legend>反馈群</legend>
     </fieldset>
 
-    <img src="feedback_pict.png" width="400"  height="255">
+    <img src="feedback_pict.png" width="400" height="255">
 
 </div>
 <script src="layui/layui.js" charset="utf-8"></script>

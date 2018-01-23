@@ -117,7 +117,7 @@
                     wechatNameArray.add("6.6 (1200) ");
                     break;
                 case 1220:
-                    wechatNameArray.add("6.6.1 (1220) ");
+                    wechatNameArray.add("6.6.1 (1220)<br/>6.6.1 (1220) [play]");
                     break;
             }
             wechatCountArray.add(value);
