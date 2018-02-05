@@ -119,6 +119,9 @@
                 case 1220:
                     wechatNameArray.add("6.6.1 (1220)<br/>6.6.1 (1220) [play]");
                     break;
+                case 1240:
+                    wechatNameArray.add("6.6.2 (1240)");
+                    break;
             }
             wechatCountArray.add(value);
             wechatFloatArray.add(Float.valueOf(value) / todayCount);
@@ -154,9 +157,9 @@
 <%
     HashMap<Integer, Integer> helperMap = DataBaseManager.getInstance().queryHelperVersionPercent(time, currentTime);
 
-    Integer temp = helperMap.get(24);
-    helperMap.remove(24);
-    helperMap.put(26, helperMap.get(26) + temp);
+//    Integer temp = helperMap.get(24);
+//    helperMap.remove(24);
+//    helperMap.put(26, helperMap.get(26) + temp);
 %>
 
 <table class="layui-table" style="max-width:1000px">
@@ -180,7 +183,7 @@
                     helperNameArray.add("1.3.10beta-branch2 (25) ");
                     break;
                 case 24:
-                    //  helperNameArray.add ("1.3.11beta (26) ") ;
+                    helperNameArray.add("1.3.11beta (24) ");
                     break;
                 case 23:
                     helperNameArray.add("1.3.10beta (23) ");
