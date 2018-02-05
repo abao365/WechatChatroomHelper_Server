@@ -39,8 +39,10 @@
     </fieldset>
 
     <blockquote class="layui-elem-quote">
-        6.6.1已经支持啦~<br>
-        现在已经提供群助手已经提供修改UI颜色功能
+        6.6.2已经支持啦~<br>
+        目前最新版本：<a href="https://github.com/zhudongya123/WechatChatroomHelper/releases">1.3.12beta</a><br>
+        更新日期：21 Dec 2017
+        更新公告：现在已经提供群助手已经提供修改UI颜色功能。
     </blockquote>
 </div>
 
@@ -92,6 +94,9 @@
             <button class="layui-btn layui-btn-primary layui-btn-sm">
                 <a href="http://dldir1.qq.com/weixin/android/weixin661android1220_1.apk">6.6.1（1220）</a>
             </button>
+            <button class="layui-btn layui-btn-primary layui-btn-sm">
+                <a href="http://dldir1.qq.com/weixin/android/weixin662android1240.apk">6.6.2（1240）</a>
+            </button>
         </div>
     </div>
     <div class="layui-colla-item">
@@ -130,7 +135,7 @@
         <legend>反馈群</legend>
     </fieldset>
 
-    <img src="feedback_pict.png" width="400" height="255">
+    <img src="feedback_pict.png" width="300" height="300">
 
 </div>
 <script src="layui/layui.js" charset="utf-8"></script>
@@ -147,3 +152,4 @@
 
 </body>
 </html>
+
