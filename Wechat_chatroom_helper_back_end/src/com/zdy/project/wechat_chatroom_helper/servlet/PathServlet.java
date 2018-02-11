@@ -76,6 +76,11 @@ public class PathServlet extends HttpServlet {
     }
 
 
+    private void getConfig1260(JsonObject data) {
+        getConfig1240(data);
+    }
+
+
     private void getConfig1240(JsonObject data) {
         data.addProperty("cclvan", "com.tencent.mm.ui.conversation.g");//主界面 listView 的 adapter
         data.addProperty("cclvapn", "com.tencent.mm.ui.f");//主界面 adapter 的实现类的父类
