@@ -85,20 +85,19 @@ public class DBdemo {
 
     public static int getUserCount(long start, long end, String field, String value) {
         String sql;
-        try {
-            Statement stmt = c.createStatement();
-            sql = "SELECT count(DISTINCT uuid) FROM user_statistics WHERE time BETWEEN " + start + " AND " + end + " AND " + field + " = " + value;
-            ResultSet resultSet = stmt.executeQuery(sql);
+    //    try {
+//            Statement stmt = c.createStatement();
+//            sql = "SELECT count(DISTINCT uuid) FROM user_statistics WHERE time BETWEEN " + start + " AND " + end + " AND " + field + " = " + value;
+//            ResultSet resultSet = stmt.executeQuery(sql);
+//
+//
+//            while (resultSet.next()) {
+//                return resultSet.getInt(1);
+//            }
 
-
-            while (resultSet.next()) {
-                return resultSet.getInt(1);
-            }
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         return 0;
 
     }

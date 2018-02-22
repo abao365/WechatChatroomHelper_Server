@@ -39,7 +39,7 @@
     </fieldset>
 
     <blockquote class="layui-elem-quote">
-        6.6.2已经支持啦~<br>
+        6.6.2[play]和6.6.3已经支持啦~<br>
         目前最新版本：<a href="https://github.com/zhudongya123/WechatChatroomHelper/releases">1.3.12beta</a><br>
         更新日期：21 Dec 2017
         更新公告：现在已经提供群助手已经提供修改UI颜色功能。
@@ -94,8 +94,13 @@
             <button class="layui-btn layui-btn-primary layui-btn-sm">
                 <a href="http://dldir1.qq.com/weixin/android/weixin661android1220_1.apk">6.6.1（1220）</a>
             </button>
+            <br>
             <button class="layui-btn layui-btn-primary layui-btn-sm">
                 <a href="http://dldir1.qq.com/weixin/android/weixin662android1240.apk">6.6.2（1240）</a>
+            </button>
+            <br>
+            <button class="layui-btn layui-btn-primary layui-btn-sm">
+                <a href="http://dldir1.qq.com/weixin/android/weixin663android1260.apk">6.6.3（1260）</a>
             </button>
         </div>
     </div>
@@ -123,7 +128,11 @@
             </button>
             <br>
             <button class="layui-btn layui-btn-primary layui-btn-sm">
-                <a href=" https://download.apkpure.com/b/apk/Y29tLnRlbmNlbnQubW1fMTIyMF9iNTI0M2FkYQ?_fn=V2VDaGF0X3Y2LjYuMV9hcGtwdXJlLmNvbS5hcGs&k=54ffe2f2f5826415e422488e7ded0bd25a5a1705&as=b889e59154d7d3ac4c0dd88044b518305a57747d&_p=Y29tLnRlbmNlbnQubW0&c=1%7CCOMMUNICATION">6.6.1（1220）play版本</a>
+                <a href="https://download.apkpure.com/b/apk/Y29tLnRlbmNlbnQubW1fMTIyMF9iNTI0M2FkYQ?_fn=V2VDaGF0X3Y2LjYuMV9hcGtwdXJlLmNvbS5hcGs&k=54ffe2f2f5826415e422488e7ded0bd25a5a1705&as=b889e59154d7d3ac4c0dd88044b518305a57747d&_p=Y29tLnRlbmNlbnQubW0&c=1%7CCOMMUNICATION">6.6.1（1220）play版本</a>
+            </button>
+            <br>
+            <button class="layui-btn layui-btn-primary layui-btn-sm">
+                <a href="https://d-01.winudf.com/b/apk/Y29tLnRlbmNlbnQubW1fMTI0MF9iNTFlY2NjZA?_fn=V2VDaGF0X3Y2LjYuMl9hcGtwdXJlLmNvbS5hcGs&_p=Y29tLnRlbmNlbnQubW0&as=f055628dbbdb42fe4e067236d8d281d95a80f957&c=1%7CCOMMUNICATION&k=2ccb7008ad66ac9a6977a7012152d1795a84a798">6.6.2（1240）play版本</a>
             </button>
 
         </div>

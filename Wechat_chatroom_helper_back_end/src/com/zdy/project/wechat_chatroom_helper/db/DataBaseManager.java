@@ -154,6 +154,45 @@ public class DataBaseManager {
         return hashMap;
     }
 
+    public String queryHelperVersionName(int versionCode) {
+
+        String sql;
+
+        try {
+            Statement stmt = c.createStatement();
+            sql = "SELECT version_name FROM helper_version_info where version_code =" + versionCode;
+            ResultSet resultSet = stmt.executeQuery(sql);
+
+
+            while (resultSet.next()) {
+                return resultSet.getString("version_name");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "未识别版本";
+    }
+
+    public String queryWechatFullVersionName(int versionCode) {
+
+        String sql;
+
+        try {
+            Statement stmt = c.createStatement();
+            sql = "SELECT full_version_name FROM wechat_version_name_info where version_code = " + versionCode;
+            ResultSet resultSet = stmt.executeQuery(sql);
+
+            while (resultSet.next()) {
+                return resultSet.getString("full_version_name");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "其他版本";
+    }
+
     public HashMap<Integer, Integer> queryHelperVersionPercent(long start, long end) {
 
         HashMap<Integer, Integer> data = new HashMap<>();

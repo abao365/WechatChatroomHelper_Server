@@ -76,53 +76,9 @@
         ArrayList<Integer> wechatCountArray = new ArrayList<>();
         ArrayList<Float> wechatFloatArray = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : wechatMap.entrySet()) {
-            Integer key = entry.getKey();
             Integer value = entry.getValue();
 
-            switch (key) {
-                case -1:
-                    wechatNameArray.add("未记录版本");
-                    break;
-                case 0:
-                    wechatNameArray.add("未适配版本");
-                    break;
-                case 1060:
-                    wechatNameArray.add("6.5.8 (1060)<br/>6.5.8 (1060) [play]");
-                    break;
-                case 1080:
-                    wechatNameArray.add("6.5.10 (1080)<br/>6.5.10 (1080) [play]");
-                    break;
-                case 1081:
-                    wechatNameArray.add("6.5.13 (1081) [play]");
-                    break;
-                case 1100:
-                    wechatNameArray.add("6.5.13 (1100)<br/>6.5.14 (1100) ");
-                    break;
-                case 1101:
-                    wechatNameArray.add("6.5.16 (1101) [play]");
-                    break;
-                case 1120:
-                    wechatNameArray.add("6.5.16 (1120) ");
-                    break;
-                case 1140:
-                    wechatNameArray.add("6.5.19 (1140) ");
-                    break;
-                case 1160:
-                    wechatNameArray.add("6.5.22 (1160)<br/>6.5.23 (1160) [play]");
-                    break;
-                case 1180:
-                    wechatNameArray.add("6.5.23 (1180) ");
-                    break;
-                case 1200:
-                    wechatNameArray.add("6.6 (1200) ");
-                    break;
-                case 1220:
-                    wechatNameArray.add("6.6.1 (1220)<br/>6.6.1 (1220) [play]");
-                    break;
-                case 1240:
-                    wechatNameArray.add("6.6.2 (1240)");
-                    break;
-            }
+            wechatNameArray.add(DataBaseManager.getInstance().queryWechatFullVersionName(entry.getKey()));
             wechatCountArray.add(value);
             wechatFloatArray.add(Float.valueOf(value) / todayCount);
         }
@@ -156,10 +112,6 @@
 
 <%
     HashMap<Integer, Integer> helperMap = DataBaseManager.getInstance().queryHelperVersionPercent(time, currentTime);
-
-//    Integer temp = helperMap.get(24);
-//    helperMap.remove(24);
-//    helperMap.put(26, helperMap.get(26) + temp);
 %>
 
 <table class="layui-table" style="max-width:1000px">
@@ -169,50 +121,9 @@
         ArrayList<Integer> helperCountArray = new ArrayList<>();
         ArrayList<Float> helperFloatArray = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : helperMap.entrySet()) {
-            Integer key = entry.getKey();
             Integer value = entry.getValue();
 
-            switch (key) {
-                case 27:
-                    helperNameArray.add("1.3.12beta (27) ");
-                    break;
-                case 26:
-                    helperNameArray.add("1.3.11beta (26) ");
-                    break;
-                case 25:
-                    helperNameArray.add("1.3.10beta-branch2 (25) ");
-                    break;
-                case 24:
-                    helperNameArray.add("1.3.11beta (24) ");
-                    break;
-                case 23:
-                    helperNameArray.add("1.3.10beta (23) ");
-                    break;
-                case 22:
-                    helperNameArray.add("1.3.9 (22) ");
-                    break;
-                case 21:
-                    helperNameArray.add("1.3.8beta (21) ");
-                    break;
-                case 20:
-                    helperNameArray.add("1.3.7 (20) ");
-                    break;
-                case 19:
-                    helperNameArray.add("1.3.6 (19) ");
-                    break;
-                case 18:
-                    helperNameArray.add("1.3.5beta (18) ");
-                    break;
-                case 17:
-                    helperNameArray.add("1.3.4 (17) ");
-                    break;
-                case 16:
-                    helperNameArray.add("1.3.3beta (16) ");
-                    break;
-                default:
-                    helperNameArray.add("其他版本");
-                    break;
-            }
+            helperNameArray.add(DataBaseManager.getInstance().queryHelperVersionName(entry.getKey()));
             helperCountArray.add(value);
             helperFloatArray.add(Float.valueOf(value) / todayCount);
         }
@@ -222,8 +133,6 @@
         <th>版本号</th>
         <td>用户数量</td>
         <td>百分比</td>
-
-
     </tr>
     </thead>
 
