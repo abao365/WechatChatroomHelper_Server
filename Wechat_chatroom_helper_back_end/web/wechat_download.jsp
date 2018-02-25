@@ -40,9 +40,9 @@
 
     <blockquote class="layui-elem-quote">
         6.6.2[play]和6.6.3已经支持啦~<br>
-        目前最新版本：<a href="https://github.com/zhudongya123/WechatChatroomHelper/releases">1.3.12beta</a><br>
-        更新日期：21 Dec 2017
-        更新公告：现在已经提供群助手已经提供修改UI颜色功能。
+        目前最新版本：<a href="https://github.com/zhudongya123/WechatChatroomHelper/releases">1.3.13beta</a><br>
+        更新日期：21 Feb 2018
+        更新公告：修正了布局和闪退问题。
     </blockquote>
 </div>
 
