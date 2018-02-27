@@ -147,12 +147,40 @@ public class DataBaseManager {
             hashMap.put("full_version_name", resultSet.getString("full_version_name"));
             hashMap.put("is_available", String.valueOf(resultSet.getInt("is_available")));
             hashMap.put("show_text_info", resultSet.getString("show_text_info"));
+            hashMap.put("download_url", resultSet.getString("download_url"));
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return hashMap;
     }
+
+    public ArrayList<HashMap<String, String>> queryWechatDownloadUrl(int is_play_version) {
+
+        ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+
+
+        try {
+            Statement statement = c.createStatement();
+            String sql = "SELECT * FROM wechat_version_info WHERE  is_play_version =" + is_play_version;
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("full_version_name", resultSet.getString("full_version_name"));
+                hashMap.put("is_available", String.valueOf(resultSet.getInt("is_available")));
+                hashMap.put("download_url", resultSet.getString("download_url"));
+
+                arrayList.add(hashMap);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
+
 
     public String queryHelperVersionName(int versionCode) {
 
