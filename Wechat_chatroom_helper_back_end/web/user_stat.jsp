@@ -11,7 +11,7 @@
 <body>
 
 <ul class="layui-nav">
-    <li class="layui-nav-item"><a href="user_stat.jsp" style="font-size: large">WechatChatroomHelper</a></li>
+    <li class="layui-nav-item"><a href="user_stat.jsp" style="font-size: medium">WechatChatroomHelper</a></li>
     <li class="layui-nav-item"><a href="wechat_download.jsp">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="user_stat.jsp">用户统计</a></li>
     <li class="layui-nav-item"><a href="thanks.jsp">鸣谢</a></li>
@@ -19,11 +19,9 @@
     </li>
 </ul>
 
-
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;max-width:1000px;">
     <legend>用户数量统计</legend>
 </fieldset>
-
 
 <div class="layui-form">
     <table class="layui-table" style="max-width:1000px">
