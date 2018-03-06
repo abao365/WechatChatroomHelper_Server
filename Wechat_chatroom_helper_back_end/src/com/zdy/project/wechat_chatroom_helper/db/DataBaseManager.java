@@ -11,11 +11,17 @@ public class DataBaseManager {
 
     private Connection c = null;
 
-
     public static final String url = "jdbc:mysql://116.62.247.71:3306/wechat_chatroom_helper";
     public static final String name = "com.mysql.jdbc.Driver";
     public static final String user = "root";
     public static final String password = "admin";
+
+    private LinkedHashMap<Integer, Integer> queryWechatVersionPercentHashMap = new LinkedHashMap<>();
+    private HashMap<Integer, Integer> queryHelperVersionPercent = new HashMap<>();
+
+    private long queryWechatVersionPercentHashMapTime = 0;
+    private long queryHelperVersionPercentTime = 0;
+
 
     private DataBaseManager() {
         try {
@@ -78,57 +84,59 @@ public class DataBaseManager {
 
     public HashMap<Integer, Integer> queryWechatVersionPercent(long start, long end) {
 
-        LinkedHashMap<Integer, Integer> data = new LinkedHashMap<>();
+        if (System.currentTimeMillis() - queryHelperVersionPercentTime > 1800 * 1000) {
+            String sql;
+            try {
+                Statement stmt = c.createStatement();
+                sql = "SELECT DISTINCT wechat_version FROM user_statistics where time BETWEEN " + start + " AND " + end;
+                ResultSet resultSet = stmt.executeQuery(sql);
 
-        String sql;
-        try {
-            Statement stmt = c.createStatement();
-            sql = "SELECT DISTINCT wechat_version FROM user_statistics where time BETWEEN " + start + " AND " + end;
-            ResultSet resultSet = stmt.executeQuery(sql);
+                ArrayList<Integer> versionCodeArray = new ArrayList<>();
 
-            ArrayList<Integer> versionCodeArray = new ArrayList<>();
+                while (resultSet.next()) {
+                    int version = Integer.valueOf(resultSet.getString(1));
 
-            while (resultSet.next()) {
-                int version = Integer.valueOf(resultSet.getString(1));
+                    int size = versionCodeArray.size();
 
-                int size = versionCodeArray.size();
-
-                if (size == 0) {
-                    versionCodeArray.add(version);
-                    continue;
-                }
-
-
-                for (int i = 0; i < size; i++) {
-                    Integer entry = versionCodeArray.get(i);
-                    if (entry > version) {
-
-                        for (int j = size; j > i; j--) {
-                            if (j == size) versionCodeArray.add(versionCodeArray.get(j - 1));
-                            else versionCodeArray.set(j, versionCodeArray.get(j - 1));
-                        }
-                        versionCodeArray.set(i, version);
-                        break;
-                    }
-
-                    if (i == size - 1) {
+                    if (size == 0) {
                         versionCodeArray.add(version);
+                        continue;
+                    }
+
+                    for (int i = 0; i < size; i++) {
+                        Integer entry = versionCodeArray.get(i);
+                        if (entry > version) {
+
+                            for (int j = size; j > i; j--) {
+                                if (j == size) versionCodeArray.add(versionCodeArray.get(j - 1));
+                                else versionCodeArray.set(j, versionCodeArray.get(j - 1));
+                            }
+                            versionCodeArray.set(i, version);
+                            break;
+                        }
+
+                        if (i == size - 1) {
+                            versionCodeArray.add(version);
+                        }
                     }
                 }
+
+                for (Integer integer : versionCodeArray) {
+                    int versionCount = getUserCount(start, end, "wechat_version", String.valueOf(integer));
+                    queryWechatVersionPercentHashMap.put(integer, versionCount);
+                }
+
+
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
 
-            for (Integer integer : versionCodeArray) {
-                int versionCount = getUserCount(start, end, "wechat_version", String.valueOf(integer));
-                data.put(integer, versionCount);
-            }
+            queryHelperVersionPercentTime = System.currentTimeMillis();
 
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
 
-        return data;
+        return queryWechatVersionPercentHashMap;
     }
 
 
@@ -223,37 +231,38 @@ public class DataBaseManager {
 
     public HashMap<Integer, Integer> queryHelperVersionPercent(long start, long end) {
 
-        HashMap<Integer, Integer> data = new HashMap<>();
+        if (System.currentTimeMillis() - queryHelperVersionPercentTime > 1800 * 1000) {
+            String sql;
+            try {
+                Statement stmt = c.createStatement();
+                sql = "SELECT DISTINCT version FROM user_statistics where time BETWEEN " + start + " AND " + end;
+                ResultSet resultSet = stmt.executeQuery(sql);
 
-        String sql;
-        try {
-            Statement stmt = c.createStatement();
-            sql = "SELECT DISTINCT version FROM user_statistics where time BETWEEN " + start + " AND " + end;
-            ResultSet resultSet = stmt.executeQuery(sql);
+                while (resultSet.next()) {
+                    int version;
+                    String resultSetString = resultSet.getString(1);
+                    if (resultSetString.equals("< 16")) version = -1;
+                    else version = Integer.valueOf(resultSetString);
 
-            while (resultSet.next()) {
-                int version;
-                String resultSetString = resultSet.getString(1);
-                if (resultSetString.equals("< 16")) version = -1;
-                else version = Integer.valueOf(resultSetString);
+                    int versionCount = getUserCount(start, end, "version", String.valueOf(version));
 
-                int versionCount = getUserCount(start, end, "version", String.valueOf(version));
+                    System.out.println("versionCount = " + versionCount + ", version = " + version);
 
-                System.out.println("versionCount = " + versionCount + ", version = " + version);
+                    queryHelperVersionPercent.put(version, versionCount);
+                }
 
-                data.put(version, versionCount);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            queryHelperVersionPercentTime = System.currentTimeMillis();
         }
 
-        return data;
+        return queryHelperVersionPercent;
     }
 
 
-    public int getUserCount(long start, long end, String field, String value) {
+    private int getUserCount(long start, long end, String field, String value) {
         String sql;
         try {
             Statement stmt = c.createStatement();
