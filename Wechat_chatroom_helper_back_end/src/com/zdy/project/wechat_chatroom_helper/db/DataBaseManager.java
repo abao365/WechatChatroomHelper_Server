@@ -84,7 +84,7 @@ public class DataBaseManager {
 
     public HashMap<Integer, Integer> queryWechatVersionPercent(long start, long end) {
 
-        if (System.currentTimeMillis() - queryHelperVersionPercentTime > 1800 * 1000) {
+        if (System.currentTimeMillis() - queryWechatVersionPercentHashMapTime > 1800 * 1000) {
             String sql;
             try {
                 Statement stmt = c.createStatement();
@@ -132,7 +132,7 @@ public class DataBaseManager {
                 e.printStackTrace();
             }
 
-            queryHelperVersionPercentTime = System.currentTimeMillis();
+            queryWechatVersionPercentHashMapTime = System.currentTimeMillis();
 
         }
 
